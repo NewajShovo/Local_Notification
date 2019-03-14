@@ -37,13 +37,27 @@
 {
    
    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reminder set"
-                                                    message:@"Ready to go!!!"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-    if (isGranted)
+    NSDate *date1 = self.datePicker.date;
+    bool ok=1;
+    if([date1 timeIntervalSinceNow]<0.0)
+    {
+        ok=0;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reminder set"
+                                                        message:@"Wrong timer"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reminder set"
+                                                        message:@"Ready to go!!!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    if (isGranted && ok)
     {
         UNUserNotificationCenter *center=[UNUserNotificationCenter currentNotificationCenter];
         UNMutableNotificationContent * mucontent = [[UNMutableNotificationContent alloc]init];
