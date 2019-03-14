@@ -37,8 +37,12 @@
 {
    
    
-    //let center = UNUserNotificationCenter.current()
-   //
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reminder set"
+                                                    message:@"Ready to go!!!"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
     if (isGranted)
     {
         UNUserNotificationCenter *center=[UNUserNotificationCenter currentNotificationCenter];
